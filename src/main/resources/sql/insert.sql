@@ -1,3 +1,4 @@
+-- Inset data in course table
 INSERT INTO course (code, name, description, year, term, credits, capacity)
 VALUES
     ('CS101', 'Introduction to Computer Science', 'Basic concepts of programming, algorithms, and problem-solving', 2024, 'Spring', 4, 50),
@@ -11,6 +12,7 @@ VALUES
     ('EC201', 'Microprocessors', 'Architecture and programming of microprocessors and microcontrollers', 2024, 'Spring', 4, 50),
     ('EC202', 'Signal Processing', 'Analysis and processing of analog and digital signals', 2024, 'Fall', 3, 60);
 
+-- Inset data in course_schedule table
 INSERT INTO course_schedule (course_id, day, time, building, room)
 VALUES
     (1, 'Monday', '10:00 AM - 11:30 AM', 'Ramanujan', 'R101'),
