@@ -1,12 +1,17 @@
 package com.himanshu.academicerp.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
 @Entity
-@Setter
-@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "faculty_course")
 public class FacultyCourse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

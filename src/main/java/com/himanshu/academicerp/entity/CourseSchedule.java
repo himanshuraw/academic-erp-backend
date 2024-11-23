@@ -1,12 +1,14 @@
 package com.himanshu.academicerp.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Table(name = "course_schedule")
 public class CourseSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
