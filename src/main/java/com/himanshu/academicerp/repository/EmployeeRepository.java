@@ -1,7 +1,6 @@
 package com.himanshu.academicerp.repository;
 
 import com.himanshu.academicerp.entity.Employee;
-import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

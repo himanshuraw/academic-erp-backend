@@ -1,5 +1,6 @@
 package com.himanshu.academicerp.controller;
 
+import com.himanshu.academicerp.dto.FacultyCourseRequest;
 import com.himanshu.academicerp.service.FacultyCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

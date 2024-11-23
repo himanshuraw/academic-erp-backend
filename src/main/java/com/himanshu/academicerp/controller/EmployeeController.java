@@ -1,9 +1,7 @@
 package com.himanshu.academicerp.controller;
 
 import com.himanshu.academicerp.dto.EmployeeRequest;
-import com.himanshu.academicerp.entity.Employee;
 import com.himanshu.academicerp.service.EmployeeService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
