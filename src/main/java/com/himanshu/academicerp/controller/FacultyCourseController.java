@@ -13,8 +13,8 @@ import java.util.List;
 @RequestMapping("/addCourses")
 public class FacultyCourseController {
     private final FacultyCourseService facultyCourseService;
-    @PostMapping("/{faculty_id}")
-    public ResponseEntity<String> addCourses(@RequestBody List<Long> courses_ids, @PathVariable Long faculty_id) {
-        return ResponseEntity.ok(facultyCourseService.addCourses(courses_ids, faculty_id));
+    @PostMapping("/{email}")
+    public ResponseEntity<String> addCourses(@RequestBody List<Long> courses_ids, @PathVariable String email, @RequestHeader("Authorization")String authHeader) {
+        return ResponseEntity.ok(facultyCourseService.addCourses(courses_ids, email, authHeader));
     }
 }

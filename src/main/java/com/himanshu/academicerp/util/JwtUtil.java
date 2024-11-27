@@ -2,7 +2,9 @@ package com.himanshu.academicerp.util;
 
 import  io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -25,13 +27,8 @@ public class JwtUtil {
                 .compact();
     }
 
-    public boolean validateToken(String token, String username) {
-        String tokenUsername = Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
-        return (username.equals(tokenUsername) && isTokenExpired(token));
+    public boolean validateToken(String token) {
+        return isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token) {
@@ -41,5 +38,13 @@ public class JwtUtil {
                 .getBody()
                 .getExpiration();
         return expirationTime.before(new Date());
+    }
+
+    public boolean validateAuthHeader(String authHeader) throws BadRequestException {
+        if(authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new BadRequestException("Invalid Authorization header");
+        }
+        String token = authHeader.substring(7);
+        return validateToken(token);
     }
 }

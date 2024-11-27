@@ -6,7 +6,9 @@ import com.himanshu.academicerp.entity.CourseSchedule;
 import com.himanshu.academicerp.mapper.CourseMapper;
 import com.himanshu.academicerp.repository.CourseRepository;
 import com.himanshu.academicerp.repository.CourseScheduleRepository;
+import com.himanshu.academicerp.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,8 +20,11 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final CourseMapper courseMapper;
     private final CourseScheduleRepository courseScheduleRepository;
-
-    public List<CourseResponse> retrieveAllCourses() {
+    private final JwtUtil jwtUtil;
+    public List<CourseResponse> retrieveAllCourses(String authHeader) throws BadRequestException {
+        if(!jwtUtil.validateAuthHeader(authHeader)){
+            throw new BadRequestException("Invalid JWT token");
+        }
         List<Course> courses = courseRepository.findAll();
         List<CourseResponse> courseResponses = new ArrayList<>();
         for (Course course : courses) {

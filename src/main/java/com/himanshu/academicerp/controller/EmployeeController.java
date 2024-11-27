@@ -17,6 +17,7 @@ public class EmployeeController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(
+            @RequestHeader("Authorization") String authHeader,
             @RequestParam("firstName") String firstName,
             @RequestParam("lastName") String lastName,
             @RequestParam("email") String email,
@@ -26,6 +27,6 @@ public class EmployeeController {
         // Create the EmployeeRequest manually from the form data
         EmployeeRequest request = new EmployeeRequest(firstName, lastName, email, photograph, department);
 
-        return ResponseEntity.ok(employeeService.registerEmployee(request));
+        return ResponseEntity.ok(employeeService.registerEmployee(request, authHeader));
     }
 }

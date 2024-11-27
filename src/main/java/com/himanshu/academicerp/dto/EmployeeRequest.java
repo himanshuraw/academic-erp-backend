@@ -16,7 +16,6 @@ public record EmployeeRequest(
         @JsonProperty("lastName")
         String lastName,
 
-
         @NotNull(message = "Email cannot be null")
         @NotEmpty(message = "Email cannot be empty")
         @JsonProperty("email")
